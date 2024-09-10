@@ -14,3 +14,5 @@ RUN gcc -g -Wall -static userns.c -o /usr/bin/userns-test \
 	&& gcc -g -Wall -static raw.c -o /usr/bin/raw-test
 
 RUN [ "$(uname -m)" = "x86_64" ] && gcc -s -m32 -nostdlib exit32.s -o /usr/bin/exit32-test || true
+
+RUN [ "$(uname -m)" = "riscv64" ] && gcc -g -Wall -static riscv_flush_icache.c -o /usr/bin/riscv_flush_icache-test || true
